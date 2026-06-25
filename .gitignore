@@ -1,1 +1,23 @@
-minikube-linux-amd64
+# binaries
+*.exe
+*.out
+*.bin
+
+# go build
+services/**/main
+services/**/book-service
+services/**/auth-service
+
+# node
+frontend/node_modules
+frontend/dist
+
+# ide
+.vscode
+.idea
+
+# os
+.DS_Store
+
+# logs
+*.log

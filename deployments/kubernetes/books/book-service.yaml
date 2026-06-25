@@ -17,18 +17,50 @@ spec:
 
     spec:
       containers:
-      - name: book-service
+        - name: book-service
+          image: book-service:latest
+          imagePullPolicy: IfNotPresent
 
-        image: book-service:latest
+          ports:
+            - containerPort: 8081
 
-        imagePullPolicy: IfNotPresent
+          # ПОЛНЫЕ ENV ДЛЯ POSTGRES
+          env:
+            - name: DB_HOST
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              value: postgres
+            - name: DB_PASSWORD
+              value: postgres
+            - name: DB_NAME
+              value: bookstore
 
-        ports:
-        - containerPort: 8081
+          # HEALTH CHECK (liveness)
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 10
+            periodSeconds: 5
 
-        env:
-        - name: DB_HOST
-          value: postgres
+          # READINESS CHECK
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 5
+
+          # ресурсы (важно для стабильности)
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 
 ---
 apiVersion: v1
@@ -41,5 +73,5 @@ spec:
     app: book-service
 
   ports:
-  - port: 8081
-    targetPort: 8081
+    - port: 8081
+      targetPort: 8081
