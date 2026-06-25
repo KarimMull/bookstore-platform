@@ -20,4 +20,4 @@ frontend/dist
 .DS_Store
 
 # logs
-*.log
+*.logminikube-linux-amd64
