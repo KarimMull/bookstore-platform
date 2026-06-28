@@ -1,18 +1,7 @@
-import axios from "axios";
+import api from './axios';
 
-const API_URL = "/api";
-
-export const getBooks = async () => {
-  const res = await axios.get(`${API_URL}/books`);
-  return res.data;
-};
-
-export const getBook = async (id) => {
-  const res = await axios.get(`${API_URL}/books/${id}`);
-  return res.data;
-};
-
-export const createBook = async (book) => {
-  const res = await axios.post(`${API_URL}/books`, book);
-  return res.data;
-};
+export const getBooks = () => api.get('/books');
+export const getBook = (id) => api.get(`/books/${id}`);
+export const createBook = (data) => api.post('/books', data);
+export const updateBook = (id, data) => api.put(`/books/${id}`, data);
+export const deleteBook = (id) => api.delete(`/books/${id}`);
