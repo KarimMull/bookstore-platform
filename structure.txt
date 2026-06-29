@@ -1,4 +1,5 @@
 /home/kmull/bookstore-platform
+├── bfg.jar
 ├── deployments
 │   ├── docker
 │   ├── kafka
@@ -9,15 +10,22 @@
 │       ├── books
 │       │   └── book-service.yaml
 │       ├── cart
+│       │   └── cart.yaml
+│       ├── frontend
+│       │   └── frontend.yaml
 │       ├── orders
+│       │   └── order.yaml
 │       ├── postgres
 │       │   └── postgres.yaml
 │       └── redis
 ├── docker-compose.yml
 ├── docs
 ├── frontend
+│   ├── Dockerfile
 │   ├── eslint.config.js
 │   ├── index.html
+│   ├── nginx
+│   │   └── default.conf
 │   ├── node_modules
 │   │   ├── acorn
 │   │   │   ├── bin
@@ -39,6 +47,20 @@
 │   │   │   ├── package.json
 │   │   │   ├── README.md
 │   │   │   └── xhtml.js
+│   │   ├── agent-base
+│   │   │   ├── dist
+│   │   │   │   └── src
+│   │   │   │       ├── index.d.ts
+│   │   │   │       ├── index.js
+│   │   │   │       ├── index.js.map
+│   │   │   │       ├── promisify.d.ts
+│   │   │   │       ├── promisify.js
+│   │   │   │       └── promisify.js.map
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   └── src
+│   │   │       ├── index.ts
+│   │   │       └── promisify.ts
 │   │   ├── ajv
 │   │   │   ├── dist
 │   │   │   │   ├── ajv.bundle.js
@@ -137,6 +159,132 @@
 │   │   │       ├── prepare-tests
 │   │   │       ├── publish-built-version
 │   │   │       └── travis-gh-pages
+│   │   ├── asynckit
+│   │   │   ├── bench.js
+│   │   │   ├── index.js
+│   │   │   ├── lib
+│   │   │   │   ├── abort.js
+│   │   │   │   ├── async.js
+│   │   │   │   ├── defer.js
+│   │   │   │   ├── iterate.js
+│   │   │   │   ├── readable_asynckit.js
+│   │   │   │   ├── readable_parallel.js
+│   │   │   │   ├── readable_serial.js
+│   │   │   │   ├── readable_serial_ordered.js
+│   │   │   │   ├── state.js
+│   │   │   │   ├── streamify.js
+│   │   │   │   └── terminator.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── parallel.js
+│   │   │   ├── README.md
+│   │   │   ├── serial.js
+│   │   │   ├── serialOrdered.js
+│   │   │   └── stream.js
+│   │   ├── axios
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── dist
+│   │   │   │   ├── axios.js
+│   │   │   │   ├── axios.min.js
+│   │   │   │   ├── axios.min.js.map
+│   │   │   │   ├── browser
+│   │   │   │   │   └── axios.cjs
+│   │   │   │   ├── esm
+│   │   │   │   │   ├── axios.js
+│   │   │   │   │   ├── axios.min.js
+│   │   │   │   │   └── axios.min.js.map
+│   │   │   │   └── node
+│   │   │   │       └── axios.cjs
+│   │   │   ├── index.d.cts
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── lib
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── adapters.js
+│   │   │   │   │   ├── fetch.js
+│   │   │   │   │   ├── http.js
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── xhr.js
+│   │   │   │   ├── axios.js
+│   │   │   │   ├── cancel
+│   │   │   │   │   ├── CanceledError.js
+│   │   │   │   │   ├── CancelToken.js
+│   │   │   │   │   └── isCancel.js
+│   │   │   │   ├── core
+│   │   │   │   │   ├── AxiosError.js
+│   │   │   │   │   ├── AxiosHeaders.js
+│   │   │   │   │   ├── Axios.js
+│   │   │   │   │   ├── buildFullPath.js
+│   │   │   │   │   ├── dispatchRequest.js
+│   │   │   │   │   ├── InterceptorManager.js
+│   │   │   │   │   ├── mergeConfig.js
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── settle.js
+│   │   │   │   │   └── transformData.js
+│   │   │   │   ├── defaults
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── transitional.js
+│   │   │   │   ├── env
+│   │   │   │   │   ├── classes
+│   │   │   │   │   │   └── FormData.js
+│   │   │   │   │   ├── data.js
+│   │   │   │   │   └── README.md
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── AxiosTransformStream.js
+│   │   │   │   │   ├── AxiosURLSearchParams.js
+│   │   │   │   │   ├── bind.js
+│   │   │   │   │   ├── buildURL.js
+│   │   │   │   │   ├── callbackify.js
+│   │   │   │   │   ├── combineURLs.js
+│   │   │   │   │   ├── composeSignals.js
+│   │   │   │   │   ├── cookies.js
+│   │   │   │   │   ├── deprecatedMethod.js
+│   │   │   │   │   ├── estimateDataURLDecodedBytes.js
+│   │   │   │   │   ├── formDataToJSON.js
+│   │   │   │   │   ├── formDataToStream.js
+│   │   │   │   │   ├── fromDataURI.js
+│   │   │   │   │   ├── Http2Sessions.js
+│   │   │   │   │   ├── HttpStatusCode.js
+│   │   │   │   │   ├── isAbsoluteURL.js
+│   │   │   │   │   ├── isAxiosError.js
+│   │   │   │   │   ├── isURLSameOrigin.js
+│   │   │   │   │   ├── null.js
+│   │   │   │   │   ├── parseHeaders.js
+│   │   │   │   │   ├── parseProtocol.js
+│   │   │   │   │   ├── progressEventReducer.js
+│   │   │   │   │   ├── readBlob.js
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── resolveConfig.js
+│   │   │   │   │   ├── sanitizeHeaderValue.js
+│   │   │   │   │   ├── shouldBypassProxy.js
+│   │   │   │   │   ├── speedometer.js
+│   │   │   │   │   ├── spread.js
+│   │   │   │   │   ├── throttle.js
+│   │   │   │   │   ├── toFormData.js
+│   │   │   │   │   ├── toURLEncodedForm.js
+│   │   │   │   │   ├── trackStream.js
+│   │   │   │   │   ├── validator.js
+│   │   │   │   │   └── ZlibHeaderTransformStream.js
+│   │   │   │   ├── platform
+│   │   │   │   │   ├── browser
+│   │   │   │   │   │   ├── classes
+│   │   │   │   │   │   │   ├── Blob.js
+│   │   │   │   │   │   │   ├── FormData.js
+│   │   │   │   │   │   │   └── URLSearchParams.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── common
+│   │   │   │   │   │   └── utils.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── node
+│   │   │   │   │       ├── classes
+│   │   │   │   │       │   ├── FormData.js
+│   │   │   │   │       │   └── URLSearchParams.js
+│   │   │   │   │       └── index.js
+│   │   │   │   └── utils.js
+│   │   │   ├── LICENSE
+│   │   │   ├── MIGRATION_GUIDE.md
+│   │   │   ├── package.json
+│   │   │   └── README.md
 │   │   ├── @babel
 │   │   │   ├── code-frame
 │   │   │   │   ├── lib
@@ -1061,6 +1209,26 @@
 │   │   │   ├── package.json
 │   │   │   ├── parse.js
 │   │   │   └── README.md
+│   │   ├── call-bind-apply-helpers
+│   │   │   ├── actualApply.d.ts
+│   │   │   ├── actualApply.js
+│   │   │   ├── applyBind.d.ts
+│   │   │   ├── applyBind.js
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── functionApply.d.ts
+│   │   │   ├── functionApply.js
+│   │   │   ├── functionCall.d.ts
+│   │   │   ├── functionCall.js
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── reflectApply.d.ts
+│   │   │   ├── reflectApply.js
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   └── tsconfig.json
 │   │   ├── caniuse-lite
 │   │   │   ├── data
 │   │   │   │   ├── agents.js
@@ -1907,8 +2075,23 @@
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── combined-stream
+│   │   │   ├── lib
+│   │   │   │   └── combined_stream.js
+│   │   │   ├── License
+│   │   │   ├── package.json
+│   │   │   ├── Readme.md
+│   │   │   └── yarn.lock
 │   │   ├── convert-source-map
 │   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   ├── cookie
+│   │   │   ├── dist
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   └── index.js.map
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
 │   │   │   └── README.md
@@ -1950,6 +2133,13 @@
 │   │   │       ├── cmp.js
 │   │   │       ├── NaN.js
 │   │   │       └── neg-vs-pos-0.js
+│   │   ├── delayed-stream
+│   │   │   ├── lib
+│   │   │   │   └── delayed_stream.js
+│   │   │   ├── License
+│   │   │   ├── Makefile
+│   │   │   ├── package.json
+│   │   │   └── Readme.md
 │   │   ├── detect-libc
 │   │   │   ├── index.d.ts
 │   │   │   ├── lib
@@ -1960,6 +2150,20 @@
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── dunder-proto
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── get.d.ts
+│   │   │   ├── get.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── set.d.ts
+│   │   │   ├── set.js
+│   │   │   ├── test
+│   │   │   │   ├── get.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── set.js
+│   │   │   └── tsconfig.json
 │   │   ├── electron-to-chromium
 │   │   │   ├── chromium-versions.js
 │   │   │   ├── chromium-versions.json
@@ -1973,6 +2177,7 @@
 │   │   │   ├── README.md
 │   │   │   ├── versions.js
 │   │   │   └── versions.json
+│   │   ├── @emnapi
 │   │   ├── escalade
 │   │   │   ├── dist
 │   │   │   │   ├── index.js
@@ -1993,6 +2198,38 @@
 │   │   │   ├── license
 │   │   │   ├── package.json
 │   │   │   └── readme.md
+│   │   ├── es-define-property
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   └── tsconfig.json
+│   │   ├── es-errors
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── eval.d.ts
+│   │   │   ├── eval.js
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── range.d.ts
+│   │   │   ├── range.js
+│   │   │   ├── README.md
+│   │   │   ├── ref.d.ts
+│   │   │   ├── ref.js
+│   │   │   ├── syntax.d.ts
+│   │   │   ├── syntax.js
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   ├── tsconfig.json
+│   │   │   ├── type.d.ts
+│   │   │   ├── type.js
+│   │   │   ├── uri.d.ts
+│   │   │   └── uri.js
 │   │   ├── @eslint
 │   │   │   ├── config-array
 │   │   │   │   ├── dist
@@ -2598,6 +2835,22 @@
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── es-object-atoms
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── isObject.d.ts
+│   │   │   ├── isObject.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── RequireObjectCoercible.d.ts
+│   │   │   ├── RequireObjectCoercible.js
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   ├── ToObject.d.ts
+│   │   │   ├── ToObject.js
+│   │   │   └── tsconfig.json
 │   │   ├── espree
 │   │   │   ├── dist
 │   │   │   │   ├── espree.cjs
@@ -2634,6 +2887,16 @@
 │   │   │   ├── gulpfile.babel.js
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── es-set-tostringtag
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   └── tsconfig.json
 │   │   ├── estraverse
 │   │   │   ├── estraverse.js
 │   │   │   ├── gulpfile.js
@@ -2739,6 +3002,33 @@
 │   │   │   ├── README.md
 │   │   │   └── types
 │   │   │       └── index.d.ts
+│   │   ├── follow-redirects
+│   │   │   ├── debug.js
+│   │   │   ├── http.js
+│   │   │   ├── https.js
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   ├── form-data
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.d.ts
+│   │   │   ├── lib
+│   │   │   │   ├── browser.js
+│   │   │   │   ├── form_data.js
+│   │   │   │   └── populate.js
+│   │   │   ├── License
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   ├── function-bind
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── implementation.js
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   └── test
+│   │   │       └── index.js
 │   │   ├── gensync
 │   │   │   ├── index.js
 │   │   │   ├── index.js.flow
@@ -2747,6 +3037,28 @@
 │   │   │   ├── README.md
 │   │   │   └── test
 │   │   │       └── index.test.js
+│   │   ├── get-intrinsic
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   └── test
+│   │   │       └── GetIntrinsic.js
+│   │   ├── get-proto
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── Object.getPrototypeOf.d.ts
+│   │   │   ├── Object.getPrototypeOf.js
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── Reflect.getPrototypeOf.d.ts
+│   │   │   ├── Reflect.getPrototypeOf.js
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   └── tsconfig.json
 │   │   ├── globals
 │   │   │   ├── globals.json
 │   │   │   ├── index.d.ts
@@ -2759,6 +3071,59 @@
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── gopd
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── gOPD.d.ts
+│   │   │   ├── gOPD.js
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   └── tsconfig.json
+│   │   ├── hasown
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── eslint.config.mjs
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   └── tsconfig.json
+│   │   ├── has-symbols
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── shams.d.ts
+│   │   │   ├── shams.js
+│   │   │   ├── test
+│   │   │   │   ├── index.js
+│   │   │   │   ├── shams
+│   │   │   │   │   ├── core-js.js
+│   │   │   │   │   └── get-own-property-symbols.js
+│   │   │   │   └── tests.js
+│   │   │   └── tsconfig.json
+│   │   ├── has-tostringtag
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   ├── README.md
+│   │   │   ├── shams.d.ts
+│   │   │   ├── shams.js
+│   │   │   ├── test
+│   │   │   │   ├── index.js
+│   │   │   │   ├── shams
+│   │   │   │   │   ├── core-js.js
+│   │   │   │   │   └── get-own-property-symbols.js
+│   │   │   │   └── tests.js
+│   │   │   └── tsconfig.json
 │   │   ├── hermes-estree
 │   │   │   ├── dist
 │   │   │   │   ├── generated
@@ -2832,6 +3197,19 @@
 │   │   │   │       ├── mutateESTreeASTForPrettier.js
 │   │   │   │       └── mutateESTreeASTForPrettier.js.flow
 │   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   ├── https-proxy-agent
+│   │   │   ├── dist
+│   │   │   │   ├── agent.d.ts
+│   │   │   │   ├── agent.js
+│   │   │   │   ├── agent.js.map
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   ├── index.js.map
+│   │   │   │   ├── parse-proxy-response.d.ts
+│   │   │   │   ├── parse-proxy-response.js
+│   │   │   │   └── parse-proxy-response.js.map
 │   │   │   ├── package.json
 │   │   │   └── README.md
 │   │   ├── @humanfs
@@ -3201,6 +3579,11 @@
 │   │   │   ├── lightningcss.linux-x64-gnu.node
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── lightningcss-linux-x64-musl
+│   │   │   ├── LICENSE
+│   │   │   ├── lightningcss.linux-x64-musl.node
+│   │   │   ├── package.json
+│   │   │   └── README.md
 │   │   ├── locate-path
 │   │   │   ├── index.d.ts
 │   │   │   ├── index.js
@@ -3208,6 +3591,58 @@
 │   │   │   ├── package.json
 │   │   │   └── readme.md
 │   │   ├── lru-cache
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   ├── math-intrinsics
+│   │   │   ├── abs.d.ts
+│   │   │   ├── abs.js
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── constants
+│   │   │   │   ├── maxArrayLength.d.ts
+│   │   │   │   ├── maxArrayLength.js
+│   │   │   │   ├── maxSafeInteger.d.ts
+│   │   │   │   ├── maxSafeInteger.js
+│   │   │   │   ├── maxValue.d.ts
+│   │   │   │   └── maxValue.js
+│   │   │   ├── floor.d.ts
+│   │   │   ├── floor.js
+│   │   │   ├── isFinite.d.ts
+│   │   │   ├── isFinite.js
+│   │   │   ├── isInteger.d.ts
+│   │   │   ├── isInteger.js
+│   │   │   ├── isNaN.d.ts
+│   │   │   ├── isNaN.js
+│   │   │   ├── isNegativeZero.d.ts
+│   │   │   ├── isNegativeZero.js
+│   │   │   ├── LICENSE
+│   │   │   ├── max.d.ts
+│   │   │   ├── max.js
+│   │   │   ├── min.d.ts
+│   │   │   ├── min.js
+│   │   │   ├── mod.d.ts
+│   │   │   ├── mod.js
+│   │   │   ├── package.json
+│   │   │   ├── pow.d.ts
+│   │   │   ├── pow.js
+│   │   │   ├── README.md
+│   │   │   ├── round.d.ts
+│   │   │   ├── round.js
+│   │   │   ├── sign.d.ts
+│   │   │   ├── sign.js
+│   │   │   ├── test
+│   │   │   │   └── index.js
+│   │   │   └── tsconfig.json
+│   │   ├── mime-db
+│   │   │   ├── db.json
+│   │   │   ├── HISTORY.md
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   ├── mime-types
+│   │   │   ├── HISTORY.md
 │   │   │   ├── index.js
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
@@ -3304,6 +3739,7 @@
 │   │   │       ├── index.cjs
 │   │   │       ├── index.js
 │   │   │       └── package.json
+│   │   ├── @napi-rs
 │   │   ├── natural-compare
 │   │   │   ├── index.js
 │   │   │   ├── package.json
@@ -3445,6 +3881,12 @@
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── proxy-from-env
+│   │   │   ├── index.cjs
+│   │   │   ├── index.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   └── README.md
 │   │   ├── punycode
 │   │   │   ├── LICENSE-MIT.txt
 │   │   │   ├── package.json
@@ -3525,11 +3967,199 @@
 │   │   │   ├── static.node.js
 │   │   │   ├── static.react-server.js
 │   │   │   └── test-utils.js
+│   │   ├── react-router
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── dist
+│   │   │   │   ├── development
+│   │   │   │   │   ├── browser-B2PdsXXH.d.ts
+│   │   │   │   │   ├── browser-DBmQ1yAR.d.mts
+│   │   │   │   │   ├── chunk-4ZMWKKQ3.mjs
+│   │   │   │   │   ├── chunk-E4MTK73K.mjs
+│   │   │   │   │   ├── chunk-U7ORXROY.js
+│   │   │   │   │   ├── chunk-WW7PN6QI.js
+│   │   │   │   │   ├── chunk-YL5M26XI.js
+│   │   │   │   │   ├── context-CeD5LmaF.d.mts
+│   │   │   │   │   ├── data-CjO11-hU.d.ts
+│   │   │   │   │   ├── data-DEjBmEfD.d.mts
+│   │   │   │   │   ├── dom-export.d.mts
+│   │   │   │   │   ├── dom-export.d.ts
+│   │   │   │   │   ├── dom-export.js
+│   │   │   │   │   ├── dom-export.mjs
+│   │   │   │   │   ├── index.d.mts
+│   │   │   │   │   ├── index.d.ts
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.mjs
+│   │   │   │   │   ├── index-react-server-client-3ykjivgQ.d.ts
+│   │   │   │   │   ├── index-react-server-client-CACgcj2J.d.mts
+│   │   │   │   │   ├── index-react-server-client.d.mts
+│   │   │   │   │   ├── index-react-server-client.d.ts
+│   │   │   │   │   ├── index-react-server-client.js
+│   │   │   │   │   ├── index-react-server-client.mjs
+│   │   │   │   │   ├── index-react-server.d.mts
+│   │   │   │   │   ├── index-react-server.d.ts
+│   │   │   │   │   ├── index-react-server.js
+│   │   │   │   │   ├── index-react-server.mjs
+│   │   │   │   │   ├── instrumentation-Dkmpzd13.d.ts
+│   │   │   │   │   ├── lib
+│   │   │   │   │   │   └── types
+│   │   │   │   │   │       ├── internal.d.mts
+│   │   │   │   │   │       ├── internal.d.ts
+│   │   │   │   │   │       ├── internal.js
+│   │   │   │   │   │       └── internal.mjs
+│   │   │   │   │   ├── register-CmkRspdl.d.mts
+│   │   │   │   │   └── register-roq_0qYo.d.ts
+│   │   │   │   └── production
+│   │   │   │       ├── browser-B2PdsXXH.d.ts
+│   │   │   │       ├── browser-DBmQ1yAR.d.mts
+│   │   │   │       ├── chunk-3Z6WS2WZ.js
+│   │   │   │       ├── chunk-BIP66BKV.js
+│   │   │   │       ├── chunk-EGOTSXNH.mjs
+│   │   │   │       ├── chunk-IUPBOWYO.js
+│   │   │   │       ├── chunk-M7NGGUU6.mjs
+│   │   │   │       ├── context-CeD5LmaF.d.mts
+│   │   │   │       ├── data-CjO11-hU.d.ts
+│   │   │   │       ├── data-DEjBmEfD.d.mts
+│   │   │   │       ├── dom-export.d.mts
+│   │   │   │       ├── dom-export.d.ts
+│   │   │   │       ├── dom-export.js
+│   │   │   │       ├── dom-export.mjs
+│   │   │   │       ├── index.d.mts
+│   │   │   │       ├── index.d.ts
+│   │   │   │       ├── index.js
+│   │   │   │       ├── index.mjs
+│   │   │   │       ├── index-react-server-client-3ykjivgQ.d.ts
+│   │   │   │       ├── index-react-server-client-CACgcj2J.d.mts
+│   │   │   │       ├── index-react-server-client.d.mts
+│   │   │   │       ├── index-react-server-client.d.ts
+│   │   │   │       ├── index-react-server-client.js
+│   │   │   │       ├── index-react-server-client.mjs
+│   │   │   │       ├── index-react-server.d.mts
+│   │   │   │       ├── index-react-server.d.ts
+│   │   │   │       ├── index-react-server.js
+│   │   │   │       ├── index-react-server.mjs
+│   │   │   │       ├── instrumentation-Dkmpzd13.d.ts
+│   │   │   │       ├── lib
+│   │   │   │       │   └── types
+│   │   │   │       │       ├── internal.d.mts
+│   │   │   │       │       ├── internal.d.ts
+│   │   │   │       │       ├── internal.js
+│   │   │   │       │       └── internal.mjs
+│   │   │   │       ├── register-CmkRspdl.d.mts
+│   │   │   │       └── register-roq_0qYo.d.ts
+│   │   │   ├── docs
+│   │   │   │   ├── explanation
+│   │   │   │   │   ├── backend-for-frontend.md
+│   │   │   │   │   ├── code-splitting.md
+│   │   │   │   │   ├── concurrency.md
+│   │   │   │   │   ├── form-vs-fetcher.md
+│   │   │   │   │   ├── hot-module-replacement.md
+│   │   │   │   │   ├── hydration.md
+│   │   │   │   │   ├── index.md
+│   │   │   │   │   ├── index-query-param.md
+│   │   │   │   │   ├── lazy-route-discovery.md
+│   │   │   │   │   ├── location.md
+│   │   │   │   │   ├── progressive-enhancement.md
+│   │   │   │   │   ├── race-conditions.md
+│   │   │   │   │   ├── react-transitions.md
+│   │   │   │   │   ├── route-matching.md
+│   │   │   │   │   ├── server-client-execution.md
+│   │   │   │   │   ├── sessions-and-cookies.md
+│   │   │   │   │   ├── special-files.md
+│   │   │   │   │   ├── state-management.md
+│   │   │   │   │   ├── styling.md
+│   │   │   │   │   └── type-safety.md
+│   │   │   │   ├── how-to
+│   │   │   │   │   ├── accessibility.md
+│   │   │   │   │   ├── client-data.md
+│   │   │   │   │   ├── data-strategy.md
+│   │   │   │   │   ├── error-boundary.md
+│   │   │   │   │   ├── error-reporting.md
+│   │   │   │   │   ├── fetchers.md
+│   │   │   │   │   ├── file-route-conventions.md
+│   │   │   │   │   ├── file-uploads.md
+│   │   │   │   │   ├── form-validation.md
+│   │   │   │   │   ├── headers.md
+│   │   │   │   │   ├── index.md
+│   │   │   │   │   ├── instrumentation.md
+│   │   │   │   │   ├── meta.md
+│   │   │   │   │   ├── middleware.md
+│   │   │   │   │   ├── navigation-blocking.md
+│   │   │   │   │   ├── optimize-revalidation.md
+│   │   │   │   │   ├── pre-rendering.md
+│   │   │   │   │   ├── presets.md
+│   │   │   │   │   ├── react-server-components.md
+│   │   │   │   │   ├── resource-routes.md
+│   │   │   │   │   ├── route-module-type-safety.md
+│   │   │   │   │   ├── search-params.md
+│   │   │   │   │   ├── security.md
+│   │   │   │   │   ├── server-bundles.md
+│   │   │   │   │   ├── spa.md
+│   │   │   │   │   ├── status.md
+│   │   │   │   │   ├── suspense.md
+│   │   │   │   │   ├── using-handle.md
+│   │   │   │   │   ├── view-transitions.md
+│   │   │   │   │   └── webhook.md
+│   │   │   │   ├── index.md
+│   │   │   │   ├── start
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── actions.md
+│   │   │   │   │   │   ├── custom.md
+│   │   │   │   │   │   ├── data-loading.md
+│   │   │   │   │   │   ├── index.md
+│   │   │   │   │   │   ├── installation.md
+│   │   │   │   │   │   ├── navigating.md
+│   │   │   │   │   │   ├── pending-ui.md
+│   │   │   │   │   │   ├── route-object.md
+│   │   │   │   │   │   ├── routing.md
+│   │   │   │   │   │   └── testing.md
+│   │   │   │   │   ├── declarative
+│   │   │   │   │   │   ├── index.md
+│   │   │   │   │   │   ├── installation.md
+│   │   │   │   │   │   ├── navigating.md
+│   │   │   │   │   │   ├── routing.md
+│   │   │   │   │   │   └── url-values.md
+│   │   │   │   │   ├── framework
+│   │   │   │   │   │   ├── actions.md
+│   │   │   │   │   │   ├── data-loading.md
+│   │   │   │   │   │   ├── deploying.md
+│   │   │   │   │   │   ├── index.md
+│   │   │   │   │   │   ├── installation.md
+│   │   │   │   │   │   ├── navigating.md
+│   │   │   │   │   │   ├── pending-ui.md
+│   │   │   │   │   │   ├── rendering.md
+│   │   │   │   │   │   ├── route-module.md
+│   │   │   │   │   │   ├── routing.md
+│   │   │   │   │   │   └── testing.md
+│   │   │   │   │   ├── index.md
+│   │   │   │   │   └── modes.md
+│   │   │   │   └── upgrading
+│   │   │   │       ├── component-routes.md
+│   │   │   │       ├── future.md
+│   │   │   │       ├── index.md
+│   │   │   │       ├── remix.md
+│   │   │   │       ├── router-provider.md
+│   │   │   │       └── v6.md
+│   │   │   ├── LICENSE.md
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   ├── react-router-dom
+│   │   │   ├── dist
+│   │   │   │   ├── index.d.mts
+│   │   │   │   ├── index.d.ts
+│   │   │   │   ├── index.js
+│   │   │   │   └── index.mjs
+│   │   │   ├── LICENSE.md
+│   │   │   ├── package.json
+│   │   │   └── README.md
 │   │   ├── @rolldown
 │   │   │   ├── binding-linux-x64-gnu
 │   │   │   │   ├── package.json
 │   │   │   │   ├── README.md
 │   │   │   │   └── rolldown-binding.linux-x64-gnu.node
+│   │   │   ├── binding-linux-x64-musl
+│   │   │   │   ├── package.json
+│   │   │   │   ├── README.md
+│   │   │   │   └── rolldown-binding.linux-x64-musl.node
 │   │   │   └── pluginutils
 │   │   │       ├── dist
 │   │   │       │   ├── filter
@@ -3618,6 +4248,12 @@
 │   │   │   ├── range.bnf
 │   │   │   ├── README.md
 │   │   │   └── semver.js
+│   │   ├── set-cookie-parser
+│   │   │   ├── lib
+│   │   │   │   └── set-cookie.js
+│   │   │   ├── LICENSE
+│   │   │   ├── package.json
+│   │   │   └── README.md
 │   │   ├── shebang-command
 │   │   │   ├── index.js
 │   │   │   ├── license
@@ -3658,6 +4294,7 @@
 │   │   │   ├── LICENSE
 │   │   │   ├── package.json
 │   │   │   └── README.md
+│   │   ├── @tybys
 │   │   ├── type-check
 │   │   │   ├── lib
 │   │   │   │   ├── check.js
@@ -4637,12 +5274,30 @@
 │   │   └── icons.svg
 │   ├── README.md
 │   ├── src
+│   │   ├── api
+│   │   │   ├── auth.js
+│   │   │   ├── axios.js
+│   │   │   ├── books.js
+│   │   │   ├── cart.js
+│   │   │   └── comments.js
 │   │   ├── App.css
 │   │   ├── App.jsx
 │   │   ├── assets
 │   │   │   ├── hero.png
 │   │   │   ├── react.svg
 │   │   │   └── vite.svg
+│   │   ├── components
+│   │   │   ├── BookDetail.jsx
+│   │   │   ├── BookForm.jsx
+│   │   │   ├── BookList.jsx
+│   │   │   ├── Cart.jsx
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── ProtectedRoute.jsx
+│   │   │   └── Register.jsx
+│   │   ├── context
+│   │   │   └── AuthContext.jsx
 │   │   ├── index.css
 │   │   └── main.jsx
 │   ├── structure.txt
@@ -4656,66 +5311,76 @@
 │       ├── deployment.yaml
 │       └── prometheus.yaml
 ├── scripts
-└── services
-    ├── auth-service
-    │   ├── cmd
-    │   │   └── main.go
-    │   ├── Dockerfile
-    │   ├── go.mod
-    │   ├── go.sum
-    │   ├── internal
-    │   │   ├── config
-    │   │   │   └── db.go
-    │   │   ├── handler
-    │   │   │   └── auth.go
-    │   │   ├── middleware
-    │   │   ├── model
-    │   │   │   └── user.go
-    │   │   ├── repository
-    │   │   └── service
-    │   │       └── jwt.go
-    │   └── migrations
-    ├── book-service
-    │   ├── book-service
-    │   ├── cmd
-    │   │   └── main.go
-    │   ├── Dockerfile
-    │   ├── go.mod
-    │   ├── go.sum
-    │   ├── internal
-    │   │   ├── config
-    │   │   │   └── db.go
-    │   │   ├── handler
-    │   │   │   └── book.go
-    │   │   ├── model
-    │   │   │   └── book.go
-    │   │   ├── repository
-    │   │   └── service
-    │   └── migrations
-    ├── cart-service
-    │   ├── cmd
-    │   │   └── main.go
-    │   ├── Dockerfile
-    │   ├── go.mod
-    │   └── internal
-    │       ├── config
-    │       ├── handler
-    │       ├── model
-    │       ├── repository
-    │       └── service
-    ├── notification-service
-    │   └── cmd
-    │       └── main.go
-    └── order-service
-        ├── cmd
-        │   └── main.go
-        ├── Dockerfile
-        ├── go.mod
-        └── internal
-            ├── config
-            ├── handler
-            ├── model
-            ├── repository
-            └── service
+├── services
+│   ├── auth-service
+│   │   ├── cmd
+│   │   │   └── main.go
+│   │   ├── Dockerfile
+│   │   ├── go.mod
+│   │   ├── go.sum
+│   │   ├── internal
+│   │   │   ├── config
+│   │   │   │   └── db.go
+│   │   │   ├── handler
+│   │   │   │   ├── auth.go
+│   │   │   │   └── comment.go
+│   │   │   ├── middleware
+│   │   │   │   └── auth.go
+│   │   │   ├── model
+│   │   │   │   ├── comment.go
+│   │   │   │   └── user.go
+│   │   │   ├── repository
+│   │   │   │   ├── comment.go
+│   │   │   │   └── user.go
+│   │   │   └── service
+│   │   │       ├── auth.go
+│   │   │       ├── comment.go
+│   │   │       └── jwt.go
+│   │   └── migrations
+│   ├── book-service
+│   │   ├── book-service
+│   │   ├── cmd
+│   │   │   └── main.go
+│   │   ├── Dockerfile
+│   │   ├── go.mod
+│   │   ├── go.sum
+│   │   ├── internal
+│   │   │   ├── config
+│   │   │   │   └── db.go
+│   │   │   ├── handler
+│   │   │   │   └── book.go
+│   │   │   ├── model
+│   │   │   │   └── book.go
+│   │   │   ├── repository
+│   │   │   │   └── book_repository.go
+│   │   │   └── service
+│   │   │       └── book_service.go
+│   │   └── migrations
+│   ├── cart-service
+│   │   ├── cmd
+│   │   │   └── main.go
+│   │   ├── Dockerfile
+│   │   ├── go.mod
+│   │   └── internal
+│   │       ├── config
+│   │       ├── handler
+│   │       ├── model
+│   │       ├── repository
+│   │       └── service
+│   ├── notification-service
+│   │   └── cmd
+│   │       └── main.go
+│   └── order-service
+│       ├── cmd
+│       │   └── main.go
+│       ├── Dockerfile
+│       ├── go.mod
+│       └── internal
+│           ├── config
+│           ├── handler
+│           ├── model
+│           ├── repository
+│           └── service
+└── structure.txt
 
-490 directories, 4229 files
+589 directories, 4795 files
