@@ -21,3 +21,4 @@ frontend/dist
 
 # logs
 *.logminikube-linux-amd64
+minikube-linux-amd64
