@@ -1,13 +1,61 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { getBooks } from '../api/books';
 
 const HomePage = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const [allBooks, setAllBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      loadSearchResults();
+    } else {
+      setSearchResults([]);
+      setShowResults(false);
+    }
+  }, [searchQuery]);
+
+  const loadSearchResults = async () => {
+    try {
+      setLoading(true);
+      const res = await getBooks();
+      const books = res.data || [];
+      setAllBooks(books);
+      const filtered = books.filter(book => 
+        book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(filtered);
+      setShowResults(true);
+    } catch (err) {
+      console.error('Search error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/books?search=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
+  const handleBookClick = (bookId) => {
+    setShowResults(false);
+    setSearchQuery('');
+    navigate(`/books/${bookId}`);
+  };
 
   return (
     <div className="homepage">
-      {/* HERO СЕКЦИЯ */}
+      {/* HERO СЕКЦИЯ С ПОИСКОМ */}
       <section className="hero">
         <div className="hero-content">
           <div className="hero-text">
@@ -17,6 +65,54 @@ const HomePage = () => {
               <br />
               <span className="discount-badge">🔥 Скидка 30% на книги от Феникс-Премьер</span>
             </p>
+            
+            {/* ПОИСКОВАЯ СТРОКА */}
+            <div className="search-container">
+              <form onSubmit={handleSearchSubmit} className="search-form">
+                <input
+                  type="text"
+                  placeholder="🔍 Поиск книг по названию или автору..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="search-input"
+                />
+                <button type="submit" className="search-btn">Найти</button>
+              </form>
+              
+              {/* Результаты поиска */}
+              {showResults && searchQuery.length > 0 && (
+                <div className="search-results">
+                  {loading ? (
+                    <div className="search-loading">Поиск...</div>
+                  ) : searchResults.length === 0 ? (
+                    <div className="search-empty">Книги не найдены</div>
+                  ) : (
+                    searchResults.slice(0, 5).map(book => (
+                      <div 
+                        key={book.id} 
+                        className="search-result-item"
+                        onClick={() => handleBookClick(book.id)}
+                      >
+                        <span className="search-result-icon">📖</span>
+                        <div className="search-result-info">
+                          <span className="search-result-title">{book.title}</span>
+                          <span className="search-result-author">{book.author}</span>
+                          <span className="search-result-price">{book.price} ₽</span>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                  {searchResults.length > 5 && (
+                    <div className="search-more">
+                      <Link to={`/books?search=${encodeURIComponent(searchQuery)}`}>
+                        Показать все ({searchResults.length})
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            
             <div className="hero-buttons">
               <Link to="/books" className="btn-hero-primary">📖 Перейти в каталог</Link>
               {!user ? (
