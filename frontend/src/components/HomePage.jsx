@@ -18,13 +18,14 @@ const HomePage = () => {
               <span className="discount-badge">🔥 Скидка 30% на книги от Феникс-Премьер</span>
             </p>
             <div className="hero-buttons">
+              <Link to="/books" className="btn-hero-primary">📖 Перейти в каталог</Link>
               {!user ? (
                 <>
-                  <Link to="/register" className="btn-hero-primary">Присоединиться</Link>
+                  <Link to="/register" className="btn-hero-secondary">Присоединиться</Link>
                   <Link to="/login" className="btn-hero-secondary">Войти</Link>
                 </>
               ) : (
-                <Link to="/books" className="btn-hero-primary">Перейти в каталог</Link>
+                <Link to="/cart" className="btn-hero-secondary">🛒 Корзина</Link>
               )}
             </div>
           </div>
@@ -86,30 +87,30 @@ const HomePage = () => {
       <section className="recommendations">
         <h2>🌟 Сегодня в ваших рекомендациях</h2>
         <div className="recommendations-grid">
-          <div className="rec-card">
+          <Link to="/books" className="rec-card">
             <div className="rec-cover">📘</div>
             <h4>Приключения Тома Сойера</h4>
             <p className="rec-author">Марк Твен</p>
             <p className="rec-price">490 ₽</p>
-          </div>
-          <div className="rec-card">
+          </Link>
+          <Link to="/books" className="rec-card">
             <div className="rec-cover">📙</div>
             <h4>Маленький принц</h4>
             <p className="rec-author">Антуан де Сент-Экзюпери</p>
             <p className="rec-price">350 ₽</p>
-          </div>
-          <div className="rec-card">
+          </Link>
+          <Link to="/books" className="rec-card">
             <div className="rec-cover">📕</div>
             <h4>Гарри Поттер и философский камень</h4>
             <p className="rec-author">Дж.К. Роулинг</p>
             <p className="rec-price">590 ₽</p>
-          </div>
-          <div className="rec-card">
+          </Link>
+          <Link to="/books" className="rec-card">
             <div className="rec-cover">📗</div>
             <h4>Винни-Пух</h4>
             <p className="rec-author">Алан Милн</p>
             <p className="rec-price">420 ₽</p>
-          </div>
+          </Link>
         </div>
       </section>
 

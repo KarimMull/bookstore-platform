@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import BookList from './components/BookList';
+import BookDetail from './components/BookDetail';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -26,6 +27,14 @@ const App = () => {
                 element={
                   <ProtectedRoute>
                     <BookList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/books/:id"
+                element={
+                  <ProtectedRoute>
+                    <BookDetail />
                   </ProtectedRoute>
                 }
               />

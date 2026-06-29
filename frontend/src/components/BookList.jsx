@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getBooks, deleteBook, createBook, updateBook } from '../api/books';
 import BookForm from './BookForm';
 
@@ -74,11 +75,14 @@ const BookList = () => {
         ) : (
           books.map(book => (
             <div key={book.id} className="book-card">
-              <h3>{book.title}</h3>
+              <Link to={`/books/${book.id}`} className="book-card-link">
+                <h3>{book.title}</h3>
+              </Link>
               <p className="author">✍️ {book.author}</p>
               <p className="price">💰 ${book.price?.toFixed(2)}</p>
               <p className="stock">📦 Stock: {book.stock || 0}</p>
               <div className="book-actions">
+                <Link to={`/books/${book.id}`} className="btn-detail">📖 Подробнее</Link>
                 <button className="btn-edit" onClick={() => setEditingBook(book)}>✏️ Edit</button>
                 <button className="btn-delete" onClick={() => handleDelete(book.id)}>🗑️ Delete</button>
               </div>
